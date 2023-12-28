@@ -1,0 +1,92 @@
+{
+  "categories": [
+    {
+      "name": "cameras",
+      "items": [
+        {
+          "name": "canon-eos-80d",
+          "amountInStock": 3
+        },
+        {
+          "name": "canon-eos-rebel-t6",
+          "amountInStock": 2
+        },
+        {
+          "name": "canon-eos-rebel-t6s",
+          "amountInStock": 0
+        },
+        {
+          "name": "ricoh-theta-s",
+          "amountInStock": 3
+        },
+        {
+          "name": "samsung-gear-360",
+          "amountInStock": 1
+        },
+        {
+          "name": "gopro-hero-4",
+          "amountInStock": 5
+        }
+      ]
+    },
+    {
+      "name": "camera-accessories",
+      "items": [
+        {
+          "name": "canon-lens-18-135mm",
+          "amountInStock": 1
+        },
+        {
+          "name": "canon-lens-55-250mm",
+          "amountInStock": 2
+        },
+        {
+          "name": "polaroid-50in-tripod",
+          "amountInStock": 5
+        },
+        {
+          "name": "polaroid-flash-module",
+          "amountInStock": 6
+        }
+      ]
+    },
+    {
+      "name": "virtual-reality",
+      "items": [
+        {
+          "name": "htc-vive",
+          "amountInStock": 0
+        },
+        {
+          "name": "oculus-go",
+          "amountInStock": 5
+        },
+        {
+          "name": "oculus-rift",
+          "amountInStock": 1
+        }
+      ]
+    },
+    {
+      "name": "vr-accessories",
+      "items": [
+        {
+          "name": "gamesir-g3s-gamepad",
+          "amountInStock": 3
+        },
+        {
+          "name": "leap-motion-controller",
+          "amountInStock": 1
+        },
+        {
+          "name": "logitech-gamepad",
+          "amountInStock": 10
+        },
+        {
+          "name": "myo-armband",
+          "amountInStock": 4
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,667 @@
+/* Site-wide styles: */
+
+* {
+  /* This rule makes sizing much simpler and more predictable */
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Large page header area: */
+
+.banner {
+  /* Center contents vertically and horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 100px;
+  padding-right: 32px;
+  padding-bottom: 70px;
+  padding-left: 32px;
+
+  background-color: steelblue;
+
+  color: white;
+}
+
+.largeLogo {
+  height: auto;
+  width: 144px;
+  /* This logo can never take up more than 40% of the width */
+  max-width: 40%;
+}
+
+.banner h1 {
+  font-family: "Comfortaa", "Helvetica", "Trebuchet MS", sans-serif;
+  font-weight: lighter;
+  font-size: 32px;
+
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+.banner .tagline {
+  font-family: "Lato", "Trebuchet MS", "Helvetica", sans-serif;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+/* Sticky navigation bar: */
+
+.banner nav {
+  /* Page positioning */
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: 0;
+
+  /* Internal positioning */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 8px;
+  padding-right: 32px;
+  padding-bottom: 8px;
+  padding-left: 32px;
+  
+  background: steelblue;
+  
+  box-shadow: 0 -8px 8px 7px black;
+}
+
+/* Site logo and "AVC": */
+
+.siteName {
+  font-family: "Comfortaa", "Helvetica", "Trebuchet MS", sans-serif;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+
+  display: flex;
+  align-items: flex-end;
+  flex: 1;
+}
+
+.smallLogo {
+  height: 24px;
+  width: auto;
+
+  margin: 0 16px;
+}
+
+/* Navigation menu: */
+
+.shortcuts {
+  display: flex;
+  align-items: center;
+}
+
+.shortcuts a {
+  color: white;
+  text-decoration: none;
+  font-family: "Lato", "Trebuchet MS", "Helvetica", sans-serif;
+  font-weight: bold;
+
+  padding-right: 12px;
+  padding-left: 12px;
+}
+
+.shortcuts a:hover {
+  text-decoration: underline;
+}
+
+/* Cart button: */
+
+.cartButtonContainer {
+  flex: 1;
+
+  text-align: right;
+}
+
+/* This button style is also used in the cart close button */
+.toolBarTextButton {
+  text-transform: uppercase;
+  font-family: "Lato", "Trebuchet MS", "Helvetica", sans-serif;
+  font-weight: bold;
+
+  padding: 8px;
+
+  cursor: pointer;
+
+  background-color: transparent;
+
+  /* Without a transparent border here, if a border shows up on hover it could
+  mess up the layout */
+  border-width: 2px;
+  border-color: transparent;
+  border-style: solid;
+  border-radius: 48px;
+
+  transition: 0.2s border, 0.2s background-color;
+}
+
+.openCartButton {
+  color: white;
+
+  margin-right: 16px;
+}
+
+.toolBarTextButton:hover,
+.toolBarTextButton:focus {
+  border-color: black;
+}
+
+.openCartButton:hover,
+.openCartButton:focus {
+  border-color: white;
+}
+
+.toolBarTextButton:active {
+  background-color: lightgray;
+}
+
+/* Main content area: */
+
+main {
+  max-width: 1184px;
+
+  padding-right: 32px;
+  padding-bottom: 32px;
+  padding-left: 32px;
+
+  /* This is another way to center things but it only works sometimes */
+  margin: auto;
+}
+
+.category {
+  /* Without position:relative, the position of the collapse button will relative
+    to the page, instead of the category */
+  position: relative;
+
+  overflow: hidden;
+
+  transition: 0.5s height;
+}
+
+.category.collapsed {
+  /* !important allows the height style to override the per-element style that
+      was set with JavaScript. */
+  height: 128px !important;
+}
+
+.iconButton {
+  background-position: left center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(images/icons/chevron-right.svg);
+  background-color: transparent;
+
+  border: none;
+
+  height: 32px;
+  width: 32px;
+
+  cursor: pointer;
+
+  /* Hide the text in the button: */
+  text-indent: 200%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.collapseCategoryButton {
+  /* The icon is sideways; this turns it */
+  transform: rotate(-90deg);
+
+  /* Position it just right in the category */
+  position: absolute;
+  top: 72px;
+  left: 16px;
+
+  transition: 0.5s transform;
+}
+
+.collapsed .collapseCategoryButton {
+  /* Flip the button when collapsed */
+  transform: rotate(90deg);
+}
+
+.category h2 {
+  font-family: "Comfortaa", "Helvetica", "Trebuchet MS", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+
+  border-bottom: 2px solid steelblue;
+
+  width: 100%;
+  
+  padding-bottom: 16px;
+  padding-top: 72px;
+  margin-top: 0;
+
+  transition: 0.5s border-color;
+}
+
+.category.collapsed h2 {
+  border-bottom-color: gray;
+}
+
+.category:target h2 {
+  border-bottom-width: 3px;
+}
+
+/* Shop items: */
+
+.itemGrid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  /* By default, show 4 items per row */
+  width: 25%;
+
+  padding-top: 24px;
+  padding-left: 32px;
+  padding-bottom: 24px;
+  padding-right: 32px;
+
+  display: flex;
+  flex-direction: column;
+
+  font-family: "Lato", "Trebuchet MS", "Helvetica", sans-serif;
+}
+
+.item.outOfStock {
+  opacity: 0.6;
+}
+
+.itemName {
+  font-family: "Comfortaa", "Helvetica", "Trebuchet MS", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.itemInStock {
+  margin-top: 0;
+
+  font-size: 12px;
+  text-align: center;
+}
+
+.itemImage {
+  width: 60%;
+
+  align-self: center;
+}
+
+.itemDescription {
+  flex-grow: 1;
+
+  margin-top: 0;
+}
+
+.itemPrice {
+  text-align: center;
+  font-weight: bold;
+
+  margin-bottom: 16px;
+}
+
+/* This button style is used in the cart as well */
+.primaryButton {
+  background-color: white;
+
+  border-color: steelblue;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 48px;
+
+  padding-top: 8px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+
+  align-self: center;
+
+  text-transform: uppercase;
+  color: steelblue;
+  font-weight: bold;
+
+  transition: 0.5s color, 0.5s background-color, 0.5s box-shadow;
+}
+
+.inCart .addToCartButton:disabled {
+  background-color: white;
+
+  border-color: transparent;
+
+  color: green;
+
+  opacity: 0.8;
+}
+
+.primaryButton:disabled {
+  border-color: transparent;
+
+  color: gray;
+}
+
+.primaryButton:not(:disabled):hover,
+.primaryButton:not(:disabled):focus {
+  background-color: steelblue;
+
+  color: white;
+
+  box-shadow: 0 1px 4px black;
+
+  cursor: pointer;
+}
+
+.primaryButton:active {
+  box-shadow: none;
+}
+
+/* Cart: */
+
+.cartContainer.hidden {
+  display: none;
+}
+
+/* Provides the dark page overlay in the background */
+.cartContainer {
+  /* Stretch to cover the whole window */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 19;
+
+  box-shadow: 0 -8px 8px 7px black;
+
+  /* This is a special color format that is partially transparent, so we can
+    still see the page behind. */
+  background-color: rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart {
+  height: 80%;
+  width: 80%;
+  max-width: 800px;
+
+  background-color: white;
+
+  box-shadow: 0 4px 15px black;
+
+  z-index: 4;
+
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.cartHeader {
+  padding: 16px 32px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart h2 {
+  margin: 0;
+
+  font-family: "Comfortaa", "Helvetica", "Trebuchet MS", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.cartItems {
+  padding-top: 0;
+  padding-right: 32px;
+  padding-bottom: 0;
+  padding-left: 32px;
+
+  position: relative;
+  flex: 1;
+
+  overflow-y: scroll;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.cartItems .item {
+  width: 100%;
+
+  padding: 0;
+  margin: 0;
+
+  flex-direction: row;
+  align-items: center;
+}
+
+.cartItems .itemImage {
+  height: 80px;
+  width: 80px;
+  margin: 16px;
+}
+
+.cartItems .itemDetails {
+  padding-right: 16px;
+  padding-left: 16px;
+
+  flex: 1;
+  height: 100%;
+  min-width: 160px;
+}
+
+.cartItems .itemName,
+.cartItems .itemPrice {
+  text-align: left;
+}
+
+.cartItems .amountInCart {
+  width: 40px;
+
+  margin-bottom: 1px;
+
+  border: none;
+  border-bottom: 1px solid steelblue;
+
+  text-align: center;
+  font-weight: bold;
+  font-family: "Lato", "Trebuchet MS", "Helvetica", sans-serif;
+  font-size: 16px;
+}
+
+.cartItems .amountInCart:hover,
+.cartItems .amountInCart:focus {
+  border-bottom-width: 2px;
+}
+
+.cartItems .itemTotalPrice {
+  text-align: center;
+  font-size: 19px;
+
+  margin-top: 0;
+  margin-right: 19px;
+  margin-bottom: 0;
+  margin-left: 19px;
+}
+
+.cartItems .removeFromCartButton {
+  align-self: center;
+
+  background-image: url(images/icons/x.svg);
+
+  margin-right: 19px;
+  margin-left: 19px;
+}
+
+.cart .noItems {
+  font-style: italic;
+
+  justify-content: center;
+
+  flex-grow: 1;
+}
+
+.cartFooter {
+  padding-top: 16px;
+  padding-right: 32px;
+  padding-bottom: 16px;
+  padding-left: 32px;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.cart .totalCost {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-family: "Lato", "Trebuchet MS", "Helvetica", sans-serif;
+
+  padding: 16px;
+
+  align-self: flex-end;
+}
+
+.cart .totalCost span {
+  font-weight: bold;
+  font-size: 24px;
+
+  padding-right: 32px;
+  padding-left: 16px;
+}
+
+/* Footer: */
+
+.siteFooter {
+  background-color: steelblue;
+
+  color: white;
+  text-align: center;
+  font-family: "Lato", "Trebuchet MS", "Helvetica", sans-serif;
+  
+  padding: 32px;
+}
+
+.siteFooter a {
+  color: white;
+  text-decoration: underline;
+}
+
+/* These media queries are styles that only appear at certain screen sizes. They
+  allow us to support smaller screens like phones and tablets. */
+
+@media only screen and (max-width: 960px) {
+  /* Switch to 3 column grid */
+  .item {
+    width: 33%;
+  }
+
+  /* Move menu to bottom of screen */
+  .shortcuts {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background-color: white;
+
+    box-shadow: 0 8px 8px 7px black;
+
+    padding: 16px;
+
+    justify-content: space-evenly;
+    overflow-x: scroll;
+
+    text-align: center;
+  }
+
+  .shortcuts a {
+    color: steelblue;
+  }
+
+  .siteFooter {
+    padding-bottom: 112px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  /* Make header roomier */
+  .banner {
+    padding-top: 135px;
+    padding-right: 32px;
+    padding-bottom: 105px;
+    padding-left: 32px;
+  }
+
+  /* Switch to 2-column grid */
+  .item {
+    width: 50%;
+  }
+
+  /* Make cart items smaller */
+  .cartItems .itemImage {
+    display: none;
+  }
+
+  .cartItems {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  .cartItems .itemPrice {
+    margin-right: 3px;
+    margin-left: 3px;
+  }
+
+  .cartItems .itemDetails, .cartItems .itemPrice {
+    font-size: 13px;
+  }
+
+  .removeFromCartButton {
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  /* Switch to single column grid */
+  .item {
+    width: 100%;
+  }
+
+  .itemDescription {
+    text-align: center;
+  }
+
+  /* Make buttons touch-friendly */
+  .primaryButton {
+    padding-top: 12px;
+    padding-right: 20px;
+    padding-bottom: 12px;
+    padding-left: 20px;
+  }
+}
